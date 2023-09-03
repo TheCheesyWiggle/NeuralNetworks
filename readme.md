@@ -16,3 +16,7 @@ Neurons
 ## Visualization
 Graphviz
 
+todo:
+forward propagation
+backwards propagation
+training (gradient descent)
