@@ -35,4 +35,4 @@ class NeuralNetwork:
     
     # Backward propagation
     def backward(self, x, y, learning_rate):
-
+        return null

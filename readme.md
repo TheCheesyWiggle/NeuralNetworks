@@ -7,11 +7,11 @@ This project is a introdution to neural networks and how they operate. This proj
 Neurons
 
 
-##
+## Algorithms
 
-##
+## Training
 
-##
+## Optimization
 
 ## Visualization
 Graphviz
