@@ -34,8 +34,8 @@ class NeuralNetwork:
         return output
     
     # Backward propagation
-    # y is the desired activation
-    # x is the current activation
+    # y is the desired output 
+    # x is the input data (Matrix prepresentation of handwritten digit)
     # learning rate controls the step size
     def back_prop(self, x, y, learning_rate):
         # Do a forward pass to get an output array
@@ -45,25 +45,5 @@ class NeuralNetwork:
         # Propagate back through the network for each layer with respect to the current neuron
         # Output layer
         for i, neuron in enumerate(self.output_layer):
-            # Chain rule on error with respect to the output
-            new_output = loss[i] * neuron.sigmoid_derivative(output[i])
-
-            # Update the bias of the output neuron
-            neuron.bias -= learning_rate * new_output
-            
-            # Update the weights of the output neuron
-            for j in range(len(neuron.weights)):
-                neuron.weights[j] -= learning_rate * new_output * self.hidden_layer[j].forward(x)
-        
-        # Hidden layer
-        for i, neuron in enumerate(self.hidden_layer):
-            ## Chain rule on error with respect to the output
-            new_hidden = np.sum([neuron.weights[i] * loss[j] * self.output_layer[j].sigmoid_derivative(output[j]) for j in range(len(self.output_layer))])
-            
-            # Update the bias of the hidden neuron
-            neuron.bias -= learning_rate * new_hidden
-            
-            # Update the weights of the hidden neuron
-            for j in range(len(neuron.weights)):
-                neuron.weights[j] -= learning_rate * new_hidden * x[j]
+            # C0 sum of a(L)j - yj squared
 
