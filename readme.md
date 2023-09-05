@@ -7,16 +7,14 @@ This project is a introdution to neural networks and how they operate. This proj
 Neurons
 
 
-## Algorithms
-
 ## Training
+
+Gradient descent
+back prop
 
 ## Optimization
 
+stohastic back prop
+
 ## Visualization
 Graphviz
-
-todo:
-forward propagation
-backwards propagation
-training (gradient descent)
