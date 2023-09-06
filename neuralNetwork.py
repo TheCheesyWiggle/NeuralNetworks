@@ -3,15 +3,18 @@ import numpy as np
 
 # Define a neuron class
 class Neuron:
-
     # Initalizes weights and biases
     def __init__ (self, input_size):
-        self.weights = np.random.uniform(-1, 1, (input_size,))
+        self.weights = np.random.uniform(-1, 1, (input_size))
         self.bias = 0
 
     # Activation function
     def sigmoid(self, x):
         return 1/(1+np.exp(-x))
+    
+    # Activation Derivative
+    def sigmoid_derivative(self, x):
+        return self.sigmoid(x) * (1 - self.sigmoid(x))
     
     # Forward propagation
     def forward(self, x):
@@ -26,6 +29,7 @@ class NeuralNetwork:
         self.output_layer = [Neuron(hidden_layer_size) for _ in range(output_size)]
 
     # Forward propagation
+    # x is the input matrix
     def forward(self, x):
         # Calculates the actvation of each neuron in the hidden layer using the input list
         hidden_outputs =[neuron.forward(x) for neuron in self.hidden_layer]
@@ -40,10 +44,11 @@ class NeuralNetwork:
     def back_prop(self, x, y, learning_rate):
         # Do a forward pass to get an output array
         output = self.forward(x)
-        # Calucate the difference from you desired output (loss)
+        # Calucate the difference from you desired output (cost/loss)
         loss = np.array(output) - y
-        # Propagate back through the network for each layer with respect to the current neuron
-        # Output layer
-        for i, neuron in enumerate(self.output_layer):
-            # C0 sum of a(L)j - yj squared
+
+        # start at output layer
+        for i, neruon in enumerate(self.output_layer):
+
+
 
