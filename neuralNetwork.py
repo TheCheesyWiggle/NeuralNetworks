@@ -27,6 +27,8 @@ class NeuralNetwork:
         # Populating the layers with neurons and establishing connections between layers for forwards and backwards propagation
         self.hidden_layer = [Neuron(input_size) for _ in range(hidden_layer_size)]
         self.output_layer = [Neuron(hidden_layer_size) for _ in range(output_size)]
+        # array of each cost to calc average cost (opitmize later)
+        self.costs = []
 
     # Forward propagation
     # x is the input matrix
@@ -38,14 +40,18 @@ class NeuralNetwork:
         return output
     
     # Backward propagation
-    # y is the desired output 
+    # y is the desired output array (ten digits)
     # x is the input data (Matrix prepresentation of handwritten digit)
     # learning rate controls the step size
     def back_prop(self, x, y, learning_rate):
         # Do a forward pass to get an output array
         output = self.forward(x)
-        # Calucate the difference from you desired output (cost/loss)
-        loss = np.array(output) - y
+        # Calucate the average cost (cost/loss)
+        loss=0
+        for i in output:
+            loss += pow(output[i]-y[i], 2)
+        
+
 
         # start at output layer
         for i, neruon in enumerate(self.output_layer):
