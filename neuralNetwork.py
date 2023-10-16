@@ -51,4 +51,5 @@ def backward(self, x, y, learning_rate):
         # Update the weights and biases in the output layer
         for i, neuron in enumerate(self.output_layer):
             for j, weight in enumerate(neuron.weights):
+                print("hi")
                 #update weights

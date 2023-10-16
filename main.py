@@ -19,7 +19,7 @@ def main():
     #
     # Load MINST dataset
     #
-    print(join(input_path, 't10k-labels-idx1-ubyte\\train-labels-idx1-ubyte'))
+
     mnist_dataloader = MnistDataloader(training_images_filepath, training_labels_filepath, test_images_filepath, test_labels_filepath)
     (x_train, y_train), (x_test, y_test) = mnist_dataloader.load_data()
 
@@ -57,6 +57,7 @@ def show_images(images, title_texts):
         if (title_text != ''):
             plt.title(title_text, fontsize = 15);        
         index += 1
+    plt.show()
 
 
 
