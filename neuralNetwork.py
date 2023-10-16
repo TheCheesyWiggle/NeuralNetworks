@@ -20,6 +20,7 @@ class Neuron:
     def forward(self, x):
         # Calculate the weighted sum and apply the sigmoid activation function
         z = np.dot(x, self.weights) + self.bias
+        print(z)
         return self.sigmoid(z)
     
 class NeuralNetwork:
@@ -39,22 +40,15 @@ class NeuralNetwork:
         output  = [neuron.forward(hidden_outputs) for neuron in self.output_layer]
         return output
     
-    # Backward propagation
-    # y is the desired output array (ten digits)
-    # x is the input data (Matrix prepresentation of handwritten digit)
-    # learning rate controls the step size
-    def back_prop(self, x, y, learning_rate):
-        # Do a forward pass to get an output array
-        output = self.forward(x)
-        # Calucate the average cost (cost/loss)
-        loss=0
-        for i in output:
-            loss += pow(output[i]-y[i], 2)
-        
+def backward(self, x, y, learning_rate):
+        # Calculate the forward pass
+        hidden_outputs = [neuron.forward(x) for neuron in self.hidden_layer]
+        outputs = [neuron.forward(hidden_outputs) for neuron in self.output_layer]
 
+        # Calculate the error in the output layer
+        output_errors = [y_i - output_i for y_i, output_i in zip(y, outputs)]
 
-        # start at output layer
-        for i, neruon in enumerate(self.output_layer):
-
-
-
+        # Update the weights and biases in the output layer
+        for i, neuron in enumerate(self.output_layer):
+            for j, weight in enumerate(neuron.weights):
+                #update weights
