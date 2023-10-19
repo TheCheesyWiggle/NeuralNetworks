@@ -1,6 +1,4 @@
-#
-# This is a sample Notebook to demonstrate how to read "MNIST Dataset"
-#
+
 import numpy as np # linear algebra
 import struct
 from array import array
